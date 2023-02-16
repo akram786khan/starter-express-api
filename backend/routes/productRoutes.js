@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-router.get('/getProducts', (req, res) => {
+const users = require('../modals/userModal');
+router.get('/getProducts', async (req, res) => {
+    const data = await users.find();
     res.status(200).json({
-        message: "get Products"
+        message: data
     })
 })
 router.post('/addProducts', (req, res) => {
