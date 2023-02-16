@@ -12,7 +12,7 @@ app.get("/",(req,res)=>{
     
 })
 app.get("/getdata",(req,res)=>{
-    res.status(200).json({name:"akram & Jera"})
+    res.send("I Love You Jera..")
     
 })
 app.listen(port, () => {
