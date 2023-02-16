@@ -17,11 +17,6 @@
   },
   "homepage": "https://github.com/cyclic-software/starter-express-api#readme",
   "dependencies": {
-    "express": "^4.17.1",
-     "bcryptjs": "^2.4.3",
-    "dotenv": "^16.0.3",
-    "express-async-handler": "^1.2.0",
-    "mongoose": "^6.9.1",
-    "nodemon": "^2.0.20"
+    "express": "^4.17.0",
   }
 }
