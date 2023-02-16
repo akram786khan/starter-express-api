@@ -7,12 +7,14 @@ const app = express();
 // app.get("/", (req, res) => {
 //     res.status(200).json({ message: "get data" });
 // })
+
+
 app.get("/",(req,res)=>{
     res.status(200).json({name:"aslam"})
     
 })
 app.get("/getdata",(req,res)=>{
-    res.send("I Love You Jera..")
+      res.status(200).json({name:"akram"})
     
 })
 app.listen(port, () => {
