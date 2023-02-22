@@ -7,6 +7,7 @@ const { execPath } = require('process');
 const app = express();
 
 ConnectDB();
+//akram
 // app.get("/", (req, res) => {
 //     res.status(200).json({ message: "get data" });
 // })
