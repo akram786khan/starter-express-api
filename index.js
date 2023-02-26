@@ -28,6 +28,7 @@ app.use('/profile', express.static('upload/images'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 app.use('/api/users', require('./backend/routes/userRoutes'))
+app.use('/api/userAuth', require('./backend/routes/userAuthRoutes'))
 app.use('/api/products', require('./backend/routes/productRoutes'))
 app.post('/upload', upload.single('profile'), (req, res) => {
     console.log(req.file);
