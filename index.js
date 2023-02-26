@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer')
 const path = require('path')
-const cors = require("cors");
+const cors = require('cors')
 const dotenv = require('dotenv').config();
 const port = process.env.PORT || 5000;
 const { errorHandler } = require('./backend/middleware/errorMiddleware')
