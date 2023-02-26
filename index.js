@@ -28,10 +28,10 @@ app.use(errorHandler);
 app.use('/profile', express.static('upload/images'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
-app.use('/api/users', require('./backend/routes/userRoutes'))
-app.use('/api/userAuth', require('./backend/routes/userAuthRoutes'))
-app.use('/api/products', require('./backend/routes/productRoutes'))
-app.post('/upload', upload.single('profile'), (req, res) => {
+app.use('/DreamCoder/api/users', require('./backend/routes/userRoutes'))
+app.use('/DreamCoder/api/userAuth', require('./backend/routes/userAuthRoutes'))
+app.use('/DreamCoder/api/products', require('./backend/routes/productRoutes'))
+app.post('/DreamCoder/upload', upload.single('profile'), (req, res) => {
     console.log(req.file);
     res.json({
         success: 1,
