@@ -64,9 +64,19 @@ const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body
     //check the Email
     const user = await User.findOne({ email })
-    if (user && password == user.password) {
+    if (user.email != email) {
+        res.status(400)
+        // throw new Error('Invalid credentials')
+        res.json({ error: 'Invalid email' })
+    }
+    if (user.password != password) {
+        res.status(400)
+        // throw new Error('Invalid credentials')
+        res.json({ error: 'Invalid password' })
+    }
+    if (user) {
         res.json({
-            status: "login done",
+            status: true,
             _id: user.id,
             name: user.name,
             email: user.email,
@@ -74,11 +84,11 @@ const loginUser = asyncHandler(async (req, res) => {
         })
 
     }
-    else {
-        res.status(400)
-        // throw new Error('Invalid credentials')
-        res.json({ error: 'Invalid credentials' })
-    }
+    // else {
+    //     res.status(400)
+    //     // throw new Error('Invalid credentials')
+    //     res.json({ error: 'Invalid credentials' })
+    // }
 })
 
 // genrate Token 
