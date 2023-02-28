@@ -6,8 +6,8 @@ const User = require('../modals/userAuthModal')
 // routes POST /api/userAuth
 //access Public 
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password, number } = req.body;
-    if (!name || !email || !password || !number) {
+    const { firstName, lastName, email, password, number, gender } = req.body;
+    if (!email || !password || !number || !firstName || !lastName || !gender) {
         res.status(400)
         throw new Error("Please add all fields")
     }
@@ -38,10 +38,12 @@ const registerUser = asyncHandler(async (req, res) => {
     // const hashedPassword = await bcrypt.hash(password, salt)
 
     const user = await User.create({
-        name,
+        firstName,
+        lastName,
         email,
         password,
-        number
+        number,
+        gender
     })
 
     if (user) {
