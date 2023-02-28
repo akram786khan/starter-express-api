@@ -20,12 +20,12 @@ const registerUser = asyncHandler(async (req, res) => {
     const userExists = await User.findOne({ email })
     // console.log("====>>", userExists);
     if (userExists) {
-        res.status(400)
+        res.status(400).json({ error: "User already exists" })
         throw new Error("User already exists")
     }
     else {
         if (password.length > 8 || password.length < 8) {
-            res.status(400)
+            res.status(400).json({ error: "$password length should be minimum  8 Characters." })
             throw new Error(`$password length should be minimum  8 Characters.`)
         }
     }
@@ -50,7 +50,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
         })
     } else {
-        res.status(400)
+        res.status(400).json({ status: false })
         throw new Error('Invalid User  Data')
     }
 })
