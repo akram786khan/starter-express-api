@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 const UserAuthSchema = new mongoose.Schema({
-    name: {
+    lastName: {
         type: String,
-        required: [true, 'Please add an name ']
+        required: [true, 'Please add an firstName ']
+    },
+    firstName: {
+        type: String,
+        required: [true, 'Please add an firstName ']
     },
     email: {
         type: String,
@@ -16,6 +20,12 @@ const UserAuthSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Please add an Number']
     },
+    gender: {
+        type: String,
+        required: [true, 'Please add an gender']
+    },
+
+
 
 }, {
     timestamps: true
