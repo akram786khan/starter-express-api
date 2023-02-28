@@ -6,8 +6,8 @@ const User = require('../modals/userAuthModal')
 // routes POST /api/userAuth
 //access Public 
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password) {
+    const { name, email, password, number } = req.body;
+    if (!name || !email || !password || !number) {
         res.status(400)
         throw new Error("Please add all fields")
     }
@@ -29,7 +29,10 @@ const registerUser = asyncHandler(async (req, res) => {
             throw new Error(`$password length should be minimum  8 Characters.`)
         }
     }
-
+    // if () {
+    //     res.status(400).json({ error: "User already exists" })
+    //     throw new Error("User already exists")
+    // }
     //check userExists User password
     // const salt = await bcrypt.getSalt(10)
     // const hashedPassword = await bcrypt.hash(password, salt)
@@ -37,7 +40,8 @@ const registerUser = asyncHandler(async (req, res) => {
     const user = await User.create({
         name,
         email,
-        password
+        password,
+        number
     })
 
     if (user) {
@@ -46,6 +50,7 @@ const registerUser = asyncHandler(async (req, res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
+            number: user.number,
             token: generateToken(user._id)
 
         })
