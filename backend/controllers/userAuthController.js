@@ -42,7 +42,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
     if (user) {
         res.status(201).json({
-            status: 'signup done',
+            status: true,
             _id: user.id,
             name: user.name,
             email: user.email,
@@ -56,7 +56,7 @@ const registerUser = asyncHandler(async (req, res) => {
 })
 
 
-// des  LoginUser new  users
+// des  LoginUser new users
 // routes POST /api/userAuth/login
 //access Public 
 const loginUser = asyncHandler(async (req, res) => {
