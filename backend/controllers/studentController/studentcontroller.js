@@ -4,6 +4,19 @@ const student = require("../../modals/studentModal/StudentModel")
 // const cours = require("../../model/studentmodel/studentcoursemodel")
 
 
+const getstudent = async (req, res) => {
+    const data = await student.find();
+
+    res.status(200).json({ status: true, message: data });
+
+}
+const getstudentfindByid = async (req, res) => {
+    const data = await student.find({ _id: req.params.id });
+
+    res.status(200).json({ status: true, message: data });
+
+}
+
 const addstudent = async (req, res) => {
     // const {course,country,subname} = req.body
     const { name, country, schoolname, number, coursse, gender, email, subject } = req.body
@@ -32,6 +45,7 @@ const addstudent = async (req, res) => {
     })
     if (data) {
         res.status(201).json({
+            status: true,
             name,
             country,
             schoolname,
@@ -49,4 +63,4 @@ const addstudent = async (req, res) => {
 }
 
 
-module.exports = { addstudent, }
+module.exports = { addstudent, getstudent, getstudentfindByid }
