@@ -31,7 +31,9 @@ const addstudent = async (req, res) => {
     // console.log(countrys.CountrySchool.School[0])
     // console.log(subjecting);
 
-
+    if (!name || !country || !schoolname || !number || !coursse || !gender || !email || !subject) {
+        res.status(400).json({ error: "please add all filds" })
+    }
 
     const data = await student.create({
         name,
