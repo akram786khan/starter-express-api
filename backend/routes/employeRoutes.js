@@ -7,7 +7,7 @@ const { addemploye, getemploye, getemployefindByid, deleteemploye, updateemploye
 Router.post("/", addemploye)
 Router.get("/", getemploye)
 Router.get("/:_id", getemployefindByid);
-Router.put("/:_id", deleteemploye)
-Router.delete("/:_id", updateemploye)
+Router.put("/:_id", updateemploye)
+Router.delete("/:_id", deleteemploye)
 
 module.exports = Router
