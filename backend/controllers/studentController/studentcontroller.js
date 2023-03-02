@@ -11,7 +11,7 @@ const getstudent = async (req, res) => {
 
 }
 const getstudentfindByid = async (req, res) => {
-    const data = await student.find({ _id: req.params.id });
+    const data = await student.find({ _id: req.params._id });
 
     res.status(200).json({ status: true, message: data });
 
