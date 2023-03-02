@@ -10,7 +10,7 @@ const getstudent = asyncHandler(async (req, res) => {
     res.status(200).json({ status: true, message: data });
 
 })
-const updatestudent = asyncHandler(async (req, res) => {
+const updatestudent = async (req, res) => {
     const fintId = await student.findById(req.params._id);
     if (!fintId) {
         res.status(400).json({ message: 'student Not Found' });
@@ -22,7 +22,7 @@ const updatestudent = asyncHandler(async (req, res) => {
     console.log("===> UpdateStudent", UpdateStudent);
     res.status(200).json({ message: `Update Student data ${req.params._id}` });
 
-})
+}
 const deletestudent = asyncHandler(async (req, res) => {
     const fintId = await users.findById(req.params._id);
     if (!fintId) {
