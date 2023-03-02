@@ -16,7 +16,7 @@ const updatestudent = async (req, res) => {
         res.status(400).json({ message: 'student Not Found' });
 
     }
-    const UpdateStudent = await users.findByIdAndUpdate(req.params._id, req.body, {
+    const UpdateStudent = await student.findByIdAndUpdate(req.params._id, req.body, {
         new: true
     })
     console.log("===> UpdateStudent", UpdateStudent);
@@ -24,7 +24,7 @@ const updatestudent = async (req, res) => {
 
 }
 const deletestudent = asyncHandler(async (req, res) => {
-    const fintId = await users.findById(req.params._id);
+    const fintId = await student.findById(req.params._id);
     if (!fintId) {
         res.status(400).json({ message: "student Not Found" })
 
