@@ -2,22 +2,45 @@ const student = require("../../modals/studentModal/StudentModel")
 // const subjects = require("../../model/studentmodel/studentsubmodel")
 // const countr = require("../../model/studentmodel/studentcountrymodel")
 // const cours = require("../../model/studentmodel/studentcoursemodel")
+const asyncHandler = require('express-async-handler')
 
-
-const getstudent = async (req, res) => {
+const getstudent = asyncHandler(async (req, res) => {
     const data = await student.find();
 
     res.status(200).json({ status: true, message: data });
 
-}
-const getstudentfindByid = async (req, res) => {
+})
+const updatestudent = asyncHandler(async (req, res) => {
+    const fintId = await student.findById(req.params._id);
+    if (!fintId) {
+        res.status(400).json({ message: 'student Not Found' });
+
+    }
+    const UpdateStudent = await users.findByIdAndUpdate(req.params._id, req.body, {
+        new: true
+    })
+    console.log("===> UpdateStudent", UpdateStudent);
+    res.status(200).json({ message: `Update Student data ${req.params._id}` });
+
+})
+const deletestudent = asyncHandler(async (req, res) => {
+    const fintId = await users.findById(req.params._id);
+    if (!fintId) {
+        res.status(400).json({ message: "student Not Found" })
+
+    }
+    await fintId.remove();
+    res.status(200).json({ message: `delete student data ${req.params._id}` });
+
+})
+const getstudentfindByid = asyncHandler(async (req, res) => {
     const data = await student.find({ _id: req.params._id });
 
     res.status(200).json({ status: true, message: data });
 
-}
+})
 
-const addstudent = async (req, res) => {
+const addstudent = asyncHandler(async (req, res) => {
     // const {course,country,subname} = req.body
     const { name, country, schoolname, number, coursse, gender, email, subject } = req.body
     //   const countrys = await countr.findOne({})
@@ -62,7 +85,7 @@ const addstudent = async (req, res) => {
     }
 
 
-}
+})
 
 
-module.exports = { addstudent, getstudent, getstudentfindByid }
+module.exports = { addstudent, getstudent, getstudentfindByid, updatestudent, deletestudent }
