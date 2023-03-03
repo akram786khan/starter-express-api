@@ -9,7 +9,7 @@ Router.get("/", getstudent);
 Router.get("/:_id", getstudentfindByid);
 Router.put("/:_id", updatestudent);
 Router.delete("/:_id", deletestudent);
-Router.get("/Country", getCountry);
+Router.get("/getCountry", getCountry);
 Router.post("/Country", addCountry);
 Router.get("/Country/:_id", getCountryfindByid);
 Router.get("/Course", getCourse);
