@@ -1,7 +1,7 @@
 
 
 const mongoose = require("mongoose")
-const country = new mongoose.Schema({
+const stucountry = new mongoose.Schema({
     CountryCode: {
         type: String
     },
@@ -14,4 +14,4 @@ const country = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model("countries", country)
+module.exports = mongoose.model("studentcountry", stucountry)
