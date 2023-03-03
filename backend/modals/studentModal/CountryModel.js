@@ -9,7 +9,7 @@ const country = new mongoose.Schema({
         type: String
     },
     CountrySchool: {
-        type: Object
+        type: Array
     }
 })
 
