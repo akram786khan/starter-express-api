@@ -80,11 +80,16 @@ const addstudent = asyncHandler(async (req, res) => {
 })
 
 const getCountry = asyncHandler(async (req, res) => {
-    const data = await country.find({});
-    if (data) {
-        res.status(400).json({ status: false, message: "data not found" })
+    try {
+        const data = await country.find({});
+        if (data) {
+            res.status(400).json({ status: false, message: "data not found" })
+        }
+        res.status(200).json({ status: true, message: data });
+
+    } catch (err) {
+        res.status(400).json({ status: false, message: err });
     }
-    res.status(200).json({ status: true, message: data });
 
 })
 
