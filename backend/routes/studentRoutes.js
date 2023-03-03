@@ -2,8 +2,8 @@ const express = require('express');
 const app = express()
 const Router = express.Router()
 Router.use(express.json())
-
-const { addstudent, getstudent, getstudentfindByid, deletestudent, updatestudent, getCountry, addCountry, getCountryfindByid, getCourse, addCourse, getCoursefindByid } = require("../controllers/studentController/studentcontroller")
+const { getCountry, addCountry, getCountryfindByid } = require('../controllers/countryController.js/countryController')
+const { addstudent, getstudent, getstudentfindByid, deletestudent, updatestudent, getCourse, addCourse, getCoursefindByid } = require("../controllers/studentController/studentcontroller")
 Router.post("/", addstudent);
 Router.get("/", getstudent);
 Router.get("/:_id", getstudentfindByid);
