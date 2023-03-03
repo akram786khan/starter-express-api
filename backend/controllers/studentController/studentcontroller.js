@@ -115,6 +115,7 @@ const addCourse = asyncHandler(async (req, res) => {
     if (data) {
         res.status(201).json({
             status: true,
+            _id: data._id,
             CourseName,
             CourseSubjects
         })
