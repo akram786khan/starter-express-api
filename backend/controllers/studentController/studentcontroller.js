@@ -1,5 +1,5 @@
 const student = require("../../modals/studentModal/StudentModel")
-const country = require("../../modals/studentModal/CountryModel");
+const stucountry = require("../../modals/studentModal/CountryModel");
 const course = require("../../modals/studentModal/CourseModel")
 // const subjects = require("../../model/studentmodel/studentsubmodel")
 // const countr = require("../../model/studentmodel/studentcountrymodel")
@@ -81,7 +81,7 @@ const addstudent = asyncHandler(async (req, res) => {
 
 const getCountry = asyncHandler(async (req, res) => {
     try {
-        const data = await country.find({});
+        const data = await stucountry.find({});
         if (data) {
             res.status(400).json({ status: false, message: "data not found" })
         }
@@ -94,7 +94,7 @@ const getCountry = asyncHandler(async (req, res) => {
 })
 
 const getCountryfindByid = asyncHandler(async (req, res) => {
-    const data = await country.find({ _id: req.params._id });
+    const data = await stucountry.find({ _id: req.params._id });
 
     res.status(200).json({ status: true, message: data });
 
@@ -109,7 +109,7 @@ const addCountry = asyncHandler(async (req, res) => {
         res.status(400).json({ error: "please add all filds" })
     }
 
-    const data = await country.create({
+    const data = await stucountry.create({
 
         CountryCode,
         CountryName,
