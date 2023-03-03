@@ -29,6 +29,7 @@ app.use('/profile', express.static('upload/images'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 app.use("/DreamCoder/api", require("./backend/routes/dashbordRoutes"))
+app.use("/DreamCoder/api", require("./backend/routes/countryRoutes"))
 app.use("/DreamCoder/api/student", require("./backend/routes/studentRoutes"))
 app.use("/DreamCoder/api/employe", require("./backend/routes/employeRoutes"))
 app.use('/DreamCoder/api/users', require('./backend/routes/userRoutes'))
