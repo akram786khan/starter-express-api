@@ -1,4 +1,6 @@
 const student = require("../../modals/studentModal/StudentModel")
+const country = require("../../modals/studentModal/CountryModel");
+const course = require("../../modals/studentModal/CourseModel")
 // const subjects = require("../../model/studentmodel/studentsubmodel")
 // const countr = require("../../model/studentmodel/studentcountrymodel")
 // const cours = require("../../model/studentmodel/studentcoursemodel")
@@ -42,16 +44,7 @@ const getstudentfindByid = asyncHandler(async (req, res) => {
 const addstudent = asyncHandler(async (req, res) => {
     // const {course,country,subname} = req.body
     const { name, country, schoolname, number, coursse, gender, email, subject } = req.body
-    //   const countrys = await countr.findOne({})
-    // const courses = await cours.findOne({})
-    // const subjecting = await subjects.findOne({})
-    // JSON.stringify(countrys)
-    // JSON.stringify(courses)
-    // JSON.stringify(subjecting)
-    // console.log(countrys.CountryCode);
-    // console.log(courses.course.basiccourse);
-    // console.log(countrys.CountrySchool.School[0])
-    // console.log(subjecting);
+
 
     if (!name || !country || !schoolname || !number || !coursse || !gender || !email || !subject) {
         res.status(400).json({ error: "please add all filds" })
@@ -86,5 +79,91 @@ const addstudent = asyncHandler(async (req, res) => {
 
 })
 
+const getCountry = asyncHandler(async (req, res) => {
+    const data = await country.find();
+    res.status(200).json({ status: true, message: data });
 
-module.exports = { addstudent, getstudent, getstudentfindByid, updatestudent, deletestudent }
+})
+
+const getCountryfindByid = asyncHandler(async (req, res) => {
+    const data = await country.find({ _id: req.params._id });
+
+    res.status(200).json({ status: true, message: data });
+
+})
+
+const addCountry = asyncHandler(async (req, res) => {
+    // const {course,country,subname} = req.body
+    const { CountryCode, CountryName, CountrySchool } = req.body
+
+
+    if (!CountryCode || !CountryName || !CountrySchool) {
+        res.status(400).json({ error: "please add all filds" })
+    }
+
+    const data = await country.create({
+        CountryCode,
+        CountryName,
+        CountrySchool,
+    })
+    if (data) {
+        res.status(201).json({
+            status: true,
+            CountryCode,
+            CountryName,
+            CountrySchool,
+        })
+    } else {
+        res.status(400).json({ error: "Invalid Country Data" })
+    }
+
+
+})
+
+const getCourse = asyncHandler(async (req, res) => {
+    const data = await course.find();
+    res.status(200).json({ status: true, message: data });
+
+})
+const getCoursefindByid = asyncHandler(async (req, res) => {
+    const data = await course.find({ _id: req.params._id });
+
+    res.status(200).json({ status: true, message: data });
+
+})
+const addCourse = asyncHandler(async (req, res) => {
+    // const {course,country,subname} = req.body
+    const { course } = req.body
+
+
+    if (!course) {
+        res.status(400).json({ error: "please add all filds" })
+    }
+
+    const data = await course.create({
+        course
+    })
+    if (data) {
+        res.status(201).json({
+            status: true,
+            course
+        })
+    } else {
+        res.status(400).json({ error: "Invalid Course Data" })
+    }
+
+
+})
+
+module.exports = {
+    addstudent,
+    getstudent,
+    getstudentfindByid,
+    updatestudent,
+    deletestudent,
+    getCountry,
+    getCountryfindByid,
+    addCountry, getCourse,
+    getCoursefindByid,
+    addCourse
+}
