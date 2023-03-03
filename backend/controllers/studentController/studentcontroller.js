@@ -105,6 +105,7 @@ const addCountry = asyncHandler(async (req, res) => {
     }
 
     const data = await country.create({
+
         CountryCode,
         CountryName,
         CountrySchool,
@@ -112,6 +113,7 @@ const addCountry = asyncHandler(async (req, res) => {
     if (data) {
         res.status(201).json({
             status: true,
+            _id: data._id,
             CountryCode,
             CountryName,
             CountrySchool,
