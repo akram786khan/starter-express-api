@@ -2,8 +2,11 @@
 
 const mongoose = require("mongoose");
 const course = new mongoose.Schema({
-    course: {
-        type: Object
+    CourseName: {
+        type: String
+    },
+    CourseSubjects: {
+        type: Array
     }
 })
 

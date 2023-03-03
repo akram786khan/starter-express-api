@@ -1,5 +1,5 @@
 const student = require("../../modals/studentModal/StudentModel")
-const stucountry = require("../../modals/studentModal/CountryModel");
+//const stucountry = require("../../modals/studentModal/CountryModel");
 const course = require("../../modals/studentModal/CourseModel")
 // const subjects = require("../../model/studentmodel/studentsubmodel")
 // const countr = require("../../model/studentmodel/studentcountrymodel")
@@ -87,27 +87,36 @@ const getCourse = asyncHandler(async (req, res) => {
 
 })
 const getCoursefindByid = asyncHandler(async (req, res) => {
-    const data = await course.find({ _id: req.params._id });
+    try {
+        const data = await course.find({ _id: req.params._id });
+        if (!data) {
+            res.status(400).json({ status: false, message: "data not found" })
+        }
+        res.status(200).json({ status: true, Subjects: data[0].CourseSubjects });
+    } catch (err) {
+        res.status(400).json({ status: false, message: err })
 
-    res.status(200).json({ status: true, message: data });
+    }
 
 })
 const addCourse = asyncHandler(async (req, res) => {
     // const {course,country,subname} = req.body
-    const { course } = req.body
+    const { CourseName, CourseSubjects } = req.body
 
 
-    if (!course) {
+    if (!CourseName || !CourseSubjects) {
         res.status(400).json({ error: "please add all filds" })
     }
 
     const data = await course.create({
-        course
+        CourseName,
+        CourseSubjects
     })
     if (data) {
         res.status(201).json({
             status: true,
-            course
+            CourseName,
+            CourseSubjects
         })
     } else {
         res.status(400).json({ error: "Invalid Course Data" })
