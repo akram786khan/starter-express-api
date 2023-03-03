@@ -8,7 +8,7 @@ const asyncHandler = require('express-async-handler')
 const getCountry = asyncHandler(async (req, res) => {
     try {
         const data = await stucountry.find();
-        if (data) {
+        if (!data) {
             res.status(400).json({ status: false, message: "data not found" })
         }
         res.status(200).json({ status: true, message: data });
