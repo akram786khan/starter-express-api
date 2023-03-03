@@ -22,7 +22,7 @@ const getCountry = asyncHandler(async (req, res) => {
 const getCountryfindByid = asyncHandler(async (req, res) => {
     const data = await stucountry.find({ _id: req.params._id });
 
-    res.status(200).json({ status: true, message: data[0].CountrySchool });
+    res.status(200).json({ status: true, SchoolNames: data[0].CountrySchool });
 
 })
 
