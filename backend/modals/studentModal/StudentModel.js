@@ -5,7 +5,7 @@ const student = new mongoose.Schema({
         required: [true, 'Please add an name']
     },
     course: {
-        type: Object,
+        type: String,
         required: [true, 'Please add an course']
 
     },
@@ -15,7 +15,7 @@ const student = new mongoose.Schema({
 
     },
     subject: {
-        type: Object,
+        type: String,
         required: [true, 'Please add an subject']
 
     },
@@ -29,11 +29,11 @@ const student = new mongoose.Schema({
         required: [true, 'Please add an gender']
     },
     schoolname: {
-        type: Object,
+        type: String,
         required: [true, 'Please add an schoolname']
     },
     country: {
-        type: Object,
+        type: String,
         required: [true, 'Please add an country']
 
     }
