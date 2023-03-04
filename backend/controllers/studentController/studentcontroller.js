@@ -43,10 +43,10 @@ const getstudentfindByid = asyncHandler(async (req, res) => {
 
 const addstudent = asyncHandler(async (req, res) => {
     // const {course,country,subname} = req.body
-    const { name, country, schoolname, number, coursse, gender, email, subject } = req.body
+    const { name, country, schoolname, number, course, gender, email, subject } = req.body
 
 
-    if (!name || !country || !schoolname || !number || !coursse || !gender || !email || !subject) {
+    if (!name || !country || !schoolname || !number || !course || !gender || !email || !subject) {
         res.status(400).json({ error: "please add all filds" })
     }
 
@@ -55,7 +55,7 @@ const addstudent = asyncHandler(async (req, res) => {
         country,
         schoolname,
         number,
-        coursse,
+        course,
         gender,
         email,
         subject,
@@ -67,7 +67,7 @@ const addstudent = asyncHandler(async (req, res) => {
             country,
             schoolname,
             number,
-            coursse,
+            course,
             gender,
             email,
             subject,
