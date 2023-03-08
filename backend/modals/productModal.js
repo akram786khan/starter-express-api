@@ -1,25 +1,33 @@
-const mongoose = require('mongoose');
-const UserSchema = new mongoose.Schema({
+const mongoose = require("mongoose")
+const projectschema = new mongoose.Schema({
     title: {
         type: String,
-        required: [true, 'Please add an title']
     },
     dis: {
         type: String,
-        required: [true, 'Please add an discription']
     },
     price: {
         type: Number,
-        required: [true, 'Please add an price']
     },
-    quentity: {
-        type: Number,
-        required: [true, 'Please add an quentity']
-    },
-},
-    {
-        timestamps: true
-    }
-);
+    reting: {
+        type: String,
 
-module.exports = mongoose.model('products', UserSchema);
+    },
+    color: {
+        type: String,
+
+    },
+    img: {
+        type: String,
+
+    },
+    size: {
+        type: String,
+
+    }
+}, {
+    timestamps: true
+})
+
+
+module.exports = mongoose.model("product", projectschema)
