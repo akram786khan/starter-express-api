@@ -8,16 +8,20 @@ const asyncHandler = require('express-async-handler');
 
 
 const getCartProduct = async (req, res) => {
-    let data = await cartproduct.find({});
-    console.log("======>", data);
-    res.status(200).json(data)
+    let data = await cartproduct.find({ User_id: req.user });
+
+
+    if (!data.length) {
+        res.status(200).json({ status: false, message: "Cart Is Empty" })
+    }
+    res.status(200).json({ status: true, message: data })
 }
 
 
 
 
 const addCartProduct = asyncHandler(async (req, res) => {
-
+    console.log("rerrrrr======>", req.user)
     const { title, dis, price, reting, img, color, size, qun } = req.body
     if (!title && !dis && !price && !reting && !img && !color && !size && !qun) {
         res.status(400).json({ message: "Please add all Filed" })
@@ -32,13 +36,13 @@ const addCartProduct = asyncHandler(async (req, res) => {
         color,
         size,
         qun,
-        User_id: req.user.id
+        User_id: req.user
     });
     if (!data) {
         res.status(404).json({ error: "data is not difine" })
     }
     console.log("====>", data);
-    res.status(200).json(data)
+    res.status(200).json({ status: true, message: data })
 })
 
 module.exports = {

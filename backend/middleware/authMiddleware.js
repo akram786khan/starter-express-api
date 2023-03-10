@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
-const User = require('../modals/userAuthModal')
+const cartproduct = require('../modals/cartProductModal')
 
 const protect = asyncHandler(async (req, res, next) => {
     let token
@@ -12,7 +12,9 @@ const protect = asyncHandler(async (req, res, next) => {
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
             // Get user from the token
-            req.user = await User.findById(decoded.id).select('-password')
+            console.log("=====decoded===>", decoded)
+            req.user = decoded.id;
+            //req.user = await cartproduct.findById(decoded.id).select('-password')
             next()
         }
         catch (error) {
