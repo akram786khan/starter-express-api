@@ -18,8 +18,8 @@ const getCartProduct = async (req, res) => {
 
 const addCartProduct = asyncHandler(async (req, res) => {
 
-    const { title, dis, price, reting, img, color, size } = req.body
-    if (!title && !dis && !price && !reting && !img && !color && !size) {
+    const { title, dis, price, reting, img, color, size, qun } = req.body
+    if (!title && !dis && !price && !reting && !img && !color && !size && !qun) {
         res.status(400).json({ message: "Please add all Filed" })
     }
 
@@ -30,7 +30,9 @@ const addCartProduct = asyncHandler(async (req, res) => {
         price,
         reting,
         color,
-        size
+        size,
+        qun,
+        User_id: req.user.id
     });
     if (!data) {
         res.status(404).json({ error: "data is not difine" })
