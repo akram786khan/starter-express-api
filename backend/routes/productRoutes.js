@@ -5,6 +5,6 @@ const { getproduct, addproduct, updateproduct, deleteproduct, findids } = requir
 router.get('/getProducts', getproduct);
 router.post('/addProducts', addproduct);
 router.put('/updateProducts', updateproduct);
-router.delete('/deleteProducts', deleteproduct);
+router.delete('/deleteProducts/:_id', deleteproduct);
 router.delete('/findById', findids);
 module.exports = router;
