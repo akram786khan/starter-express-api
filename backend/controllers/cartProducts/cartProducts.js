@@ -2,13 +2,13 @@
 //db();
 const jwt = require("jsonwebtoken")
 //const mongodb = require('mongodb');
-const product = require('../../modals/cartProductModal');
+const cartproduct = require('../../modals/cartProductModal');
 const asyncHandler = require('express-async-handler');
 
 
 
 const getCartProduct = async (req, res) => {
-    let data = await product.find({});
+    let data = await cartproduct.find({});
     console.log("======>", data);
     res.status(200).json(data)
 }
@@ -23,7 +23,7 @@ const addCartProduct = asyncHandler(async (req, res) => {
         res.status(400).json({ message: "Please add all Filed" })
     }
 
-    let data = await product.create({
+    let data = await cartproduct.create({
         title,
         dis,
         img,
