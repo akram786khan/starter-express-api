@@ -7,7 +7,7 @@ const projectcartschema = new mongoose.Schema({
         type: String,
     },
     price: {
-        type: Number,
+        type: String,
     },
     reting: {
         type: String,
