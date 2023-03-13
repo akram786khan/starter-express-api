@@ -46,13 +46,13 @@ const addCartProduct = asyncHandler(async (req, res) => {
 })
 
 const DeleteProduct = asyncHandler(async (req, res) => {
-    const fintId = await cartproduct.findById(req.params._id);
+    const fintId = await cartproduct.findById(req.params.id);
     if (!fintId) {
         res.status(400).json({ message: "cart product Not Found" })
 
     }
     await fintId.remove();
-    res.status(200).json({ message: `delete cartproduct data ${req.params._id}` });
+    res.status(200).json({ message: `delete cartproduct data ${req.params.id}` });
 
 })
 module.exports = {
