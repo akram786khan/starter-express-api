@@ -4,5 +4,5 @@ const { getCartProduct, addCartProduct, DeleteProduct } = require('../controller
 const { protect } = require('../middleware/authMiddleware');
 router.get('/getCartProduct', protect, getCartProduct)
 router.post('/addCartProduct', protect, addCartProduct)
-router.delete('/DeleteProduct/:id', DeleteProduct)
+router.delete('/DeleteProduct/:id', protect, DeleteProduct)
 module.exports = router;
