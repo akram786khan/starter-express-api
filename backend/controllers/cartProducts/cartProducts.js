@@ -12,7 +12,7 @@ const getCartProduct = async (req, res) => {
 
 
     if (!data.length) {
-        res.status(200).json({ status: false, message: "Cart Is Empty" })
+        res.status(200).json({ status: false, message: [] })
     }
     res.status(200).json({ status: true, message: data })
 }
