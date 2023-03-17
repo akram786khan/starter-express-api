@@ -37,6 +37,7 @@ app.use('/DreamCoder/api/users', require('./backend/routes/userRoutes'))
 app.use('/DreamCoder/api/userAuth', require('./backend/routes/userAuthRoutes'))
 app.use('/DreamCoder/api', require('./backend/routes/productRoutes'))
 app.use('/DreamCoder/api', require('./backend/routes/addtocartRoutes'))
+app.use('/DreamCoder/api', require('./backend/routes/wishListRoutes'))
 app.post('/DreamCoder/upload', upload.single('profile'), (req, res) => {
     console.log(req.file);
     res.json({

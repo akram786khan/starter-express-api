@@ -2,13 +2,11 @@
 //db();
 const jwt = require("jsonwebtoken")
 //const mongodb = require('mongodb');
-const cartproduct = require('../../modals/cartProductModal');
+const wishListproduct = require('../../modals/wishListProductsModel');
 const asyncHandler = require('express-async-handler');
 
-
-
-const getCartProduct = async (req, res) => {
-    let data = await cartproduct.find({ User_id: req.user });
+const getWishListProduct = async (req, res) => {
+    let data = await wishListproduct.find({ User_id: req.user });
 
 
     if (!data.length) {
@@ -16,14 +14,14 @@ const getCartProduct = async (req, res) => {
     }
     res.status(200).json({ status: true, message: data })
 }
-const addCartProduct = asyncHandler(async (req, res) => {
+const addWishListProduct = asyncHandler(async (req, res) => {
     console.log("rerrrrr======>", req.user)
     const { title, dis, price, reting, img, color, size, qun } = req.body
-    if (!title && !dis && !price && !reting && !img && !color && !size && !qun) {
+    if (!title && !dis && !price && !reting && !img && !color && !size) {
         res.status(400).json({ message: "Please add all Filed" })
     }
 
-    let data = await cartproduct.create({
+    let data = await wishListproduct.create({
         title,
         dis,
         img,
@@ -31,7 +29,6 @@ const addCartProduct = asyncHandler(async (req, res) => {
         reting,
         color,
         size,
-        qun,
         User_id: req.user
     });
     if (!data) {
@@ -41,16 +38,16 @@ const addCartProduct = asyncHandler(async (req, res) => {
     res.status(200).json({ status: true, message: data })
 })
 
-const DeleteProduct = asyncHandler(async (req, res) => {
-    const fintId = await cartproduct.findById(req.params.id);
+const DeleteWishListProduct = asyncHandler(async (req, res) => {
+    const fintId = await wishListproduct.findById(req.params.id);
     if (!fintId) {
-        res.status(400).json({ message: "cart product Not Found" })
+        res.status(400).json({ message: "WishList product Not Found" })
 
     }
     await fintId.remove();
-    res.status(200).json({ message: `delete cartproduct data ${req.params.id}` });
+    res.status(200).json({ message: `delete wishListproduct data ${req.params.id}` });
 
 })
 module.exports = {
-    getCartProduct, addCartProduct, DeleteProduct
+    getWishListProduct, addWishListProduct, DeleteWishListProduct
 }
