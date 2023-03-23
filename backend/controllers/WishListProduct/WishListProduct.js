@@ -40,6 +40,7 @@ const addWishListProduct = asyncHandler(async (req, res) => {
 
 const DeleteWishListProduct = asyncHandler(async (req, res) => {
     const fintId = await wishListproduct.findById(req.params.id);
+    console.log("=====dsd>>", fintId);
     if (!fintId) {
         res.status(400).json({ message: "WishList product Not Found" })
 
